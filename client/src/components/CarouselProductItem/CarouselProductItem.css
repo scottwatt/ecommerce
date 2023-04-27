@@ -1,0 +1,21 @@
+.carouselProductItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .carouselProductItemImage {
+    width: 300px; 
+    height: 300px; 
+    object-fit: cover;
+    }
+
+  
+  .carouselProductItemInfo {
+    color: white;
+    max-width: 50%;
+    text-align: left;
+  }
+  

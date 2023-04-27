@@ -1,0 +1,12 @@
+.carousel-item-custom {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+
+  .carousel-control-prev,
+.carousel-control-next {
+  display: none;
+}
+
+  
