@@ -20,11 +20,12 @@ const Home = () => {
     }
   }, [data, currentCategory]);
 
+
   return (
     <div className="container">
       {!loading && <JumbotronCarousel items={carouselItems} />}
       <ProductList />
-      <Cart />
+      {/* <Cart /> */}
     </div>
   );
 };

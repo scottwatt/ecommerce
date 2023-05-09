@@ -84,7 +84,7 @@ function Detail() {
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container my-1">
+        <div className="container my-7">
           <Link to="/">← Back to Products</Link>
 
           <h2>{currentProduct.name}</h2>
@@ -103,6 +103,7 @@ function Detail() {
           </p>
 
           <img
+            className='detail'
             src={`/images/${currentProduct.image}`}
             alt={currentProduct.name}
           />

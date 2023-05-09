@@ -1,0 +1,29 @@
+.login {
+    display: flex;
+    padding-right: 2vh;
+}
+
+.sticky {
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    z-index: 1;
+    opacity: 100%;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+  }
+  

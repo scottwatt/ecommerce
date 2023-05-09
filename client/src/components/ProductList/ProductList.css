@@ -1,0 +1,27 @@
+.product-list {
+  padding-top: 24px;
+}
+
+.product-list .container {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.product-list .container h2 {
+  margin-bottom: 16px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333; /* Replace with the appropriate color value from your $clr-dark variable */
+}
+
+.product-list .container h3 {
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333; /* Replace with the appropriate color value from your $clr-dark variable */
+}
+
+.product-list .container .flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}

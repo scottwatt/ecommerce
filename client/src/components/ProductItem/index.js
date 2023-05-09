@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
@@ -7,6 +7,7 @@ import { idbPromise } from "../../utils/helpers";
 import './productItem.css';
 
 function ProductItem(item) {
+  const [itemAdded, setItemAdded] = useState(false);
   const [state, dispatch] = useStoreContext();
 
   const {
@@ -18,6 +19,13 @@ function ProductItem(item) {
   } = item;
 
   const { cart } = state
+
+  function showAddedMessage() {
+    setItemAdded(true);
+    setTimeout(() => {
+      setItemAdded(false);
+    }, 3000); // hide message after 3 seconds
+  }
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
@@ -38,10 +46,16 @@ function ProductItem(item) {
       });
       idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
     }
+    showAddedMessage(); 
   }
 
   return (
     <div className="card px-1 py-1">
+       {itemAdded && (
+      <div className="item-added-message">
+        Item added to cart!
+      </div>
+    )}
       <Link to={`/products/${_id}`}>
         <img
           alt={name}
@@ -54,7 +68,7 @@ function ProductItem(item) {
         <div>{quantity} {pluralize("item", quantity)} in stock</div>
         <span>${price}</span>
       </div>
-      <button onClick={addToCart}>Add to cart</button>
+      <button className="productButton" onClick={addToCart}>Add to cart</button>
     </div>
   );
 }

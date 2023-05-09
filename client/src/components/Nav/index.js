@@ -1,51 +1,42 @@
 import React, { useState } from "react";
 import Auth from "../../utils/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CategoryMenu from "../CategoryMenu";
-import { Navbar, Container, Nav as NavLink} from 'react-bootstrap';
+import Cart from "../Cart";
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./navbar.css"
-
 
 function Navigation() {
 
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/orderHistory">
-              Order History
-            </Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
-          </li>
-        </ul>
+        <Nav className="nav-right">
+          <Nav.Link as={Link} to="/orderHistory">
+            Order History
+          </Nav.Link>
+          <Nav.Link href="/" onClick={() => Auth.logout()}>
+            Logout
+          </Nav.Link>
+        </Nav>
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
+        <Nav className="nav-right login">
+          <Nav.Link as={Link} to="/signup">
+            Signup
+          </Nav.Link>
+          <Nav.Link as={Link} to="/login">
+            Login
+          </Nav.Link>
+        </Nav>
       );
     }
   }
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar className="sticky" bg="dark" variant="dark" expand="lg">
       <Container>
         <Navbar.Brand>
           <Link to="/" className="text-decoration-none text-reset">
@@ -54,10 +45,11 @@ function Navigation() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">
-          <NavLink className="me-auto">
+          <Nav className="nav-left me-auto">
             <CategoryMenu />
-          </NavLink>
-          <NavLink>{showNavigation()}</NavLink>
+          </Nav>
+          {showNavigation()}
+          <Cart />
         </Navbar.Collapse>
       </Container>
     </Navbar>
