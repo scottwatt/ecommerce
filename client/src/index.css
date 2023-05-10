@@ -88,6 +88,12 @@ select {
   max-height: 80%;
 }
 
+.detail-button{
+  background-color: #0d6efd;
+  cursor: pointer;
+}
+
+
 /* flexbox and grid */
 .flex {
   display: flex;
