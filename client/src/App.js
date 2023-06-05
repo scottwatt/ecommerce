@@ -20,7 +20,7 @@ import CartPage from "./pages/CartPage";
 
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:5002/graphql',
+  uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
