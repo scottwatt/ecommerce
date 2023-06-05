@@ -25,6 +25,7 @@
     "dotenv": "^16.0.3",
     "react-bootstrap": "^2.7.4",
     "react-responsive-carousel": "^3.2.23",
+    "react-scripts": "^4.0.2",
     "sass": "^1.62.1"
   }
 }
