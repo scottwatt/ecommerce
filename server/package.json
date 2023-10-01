@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon",
-    "seed": "node config/seeds.js"
+    "seed": "node config/seeds.js",
+    "unseed": "node config/unseed.js",
+    "clear": "node config/dropDatabase.js"
   },
   "keywords": [],
   "author": "",
@@ -26,3 +28,4 @@
     "nodemon": "^2.0.2"
   }
 }
+

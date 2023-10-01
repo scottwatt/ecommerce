@@ -93,13 +93,14 @@ function Detail() {
 
           <p>
             <strong>Price:</strong>${currentProduct.price}{' '}
-            <button className='detail-button mx-5' onClick={addToCart}>Add to Cart</button>
-            <button
-              disabled={!cart.find((p) => p._id === currentProduct._id)}
-              onClick={removeFromCart}
-            >
-              Remove from Cart
+            <button className='add-to-cart-button' onClick={addToCart}>
+              Add to Cart
             </button>
+            {cart.find((p) => p._id === currentProduct._id) && (
+              <button className='remove-from-cart-button' onClick={removeFromCart}>
+                Remove from Cart
+              </button>
+            )}
           </p>
 
           <img

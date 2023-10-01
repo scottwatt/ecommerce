@@ -7,9 +7,11 @@
     "start": "node server/server.js",
     "heroku-prebuild": "npm rebuild",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
+    "unseed": "cd server && npm run unseed",
+    "install": "concurrently \"cd server && npm i && cd ../client && npm i\"",
+    "build": "cd client && npm run build",
+    "clear": "cd server && npm run clear"
   },
   "engines": {
     "node": "16.x"
@@ -19,15 +21,5 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
-  },
-  "dependencies": {
-    "bootstrap": "^5.2.3",
-    "dotenv": "^16.0.3",
-    "react-bootstrap": "^2.7.4",
-    "react-responsive-carousel": "^3.2.23",
-    "react-scripts": "^4.0.2",
-    "sass": "^1.62.1",
-    "type-fest": "^0.13.1",
-    "webpack-dev-server": "^3.11.0"
   }
 }

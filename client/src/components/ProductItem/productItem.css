@@ -1,9 +1,37 @@
+
 .productImage {
     width: 300px; /* Adjust the width as needed */
     height: 300px; /* Adjust the height as needed */
     object-fit: cover;
 }
 
-.productButton{
+.productButton {
     background-color: #0d6efd;
+    color: white; /* Make text color white */
+    border: none; /* Remove default borders */
+    padding: 10px 20px; /* Add some padding for a better look */
+    border-radius: 5px; /* Round the corners a bit */
+    cursor: pointer; /* Change cursor on hover */
+    margin-top: 10px; /* Add some space at the top */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.productButton:hover {
+    background-color: #0056b3; /* Darken the button on hover for better UX */
+}
+
+.removeButton {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px; /* Add some space to the left of the button */
+    transition: background-color 0.3s;
+}
+
+.removeButton:hover {
+    background-color: darkred; /* Darken the button on hover */
 }

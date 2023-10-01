@@ -14,7 +14,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function CategoryMenu() {
   const [state, dispatch] = useStoreContext();
 
-  const { categories } = state;
+  const { categories, currentCategory } = state;
+
+  const currentCategoryName = categories.find(cat => cat._id === currentCategory)?.name || 'Categories';
+
 
   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
@@ -49,7 +52,7 @@ function CategoryMenu() {
     <div>
     <DropdownButton
       id="category-dropdown"
-      title="Categories"
+      title={currentCategoryName}
       variant="secondary"
       onSelect={handleChange}
     >

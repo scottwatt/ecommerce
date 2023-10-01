@@ -40,6 +40,13 @@ const Cart = () => {
     setIsCartOpen(!isCartOpen);
   }
 
+  function handleOverlayClick(event) {
+    // If the click is directly on the overlay (not the cart), close the cart.
+    if (event.target.classList.contains('cart-overlay')) {
+      toggleCart();
+    }
+  }
+
   function calculateTotal() {
     let sum = 0;
     state.cart.forEach((item) => {
@@ -71,28 +78,26 @@ const Cart = () => {
         <span className="cart-items-count">{totalItemsInCart}</span>
       </div>
       {isCartOpen && (
-        <div className="cart-overlay">
+        <div className="cart-overlay" onClick={handleOverlayClick}>
           <div className="cart-panel">
             <div className="close" onClick={toggleCart}>
               [close]
             </div>
             <h2>Shopping Cart</h2>
             {state.cart.length ? (
-              <div>
-                <strong className='mx-2'>Total: ${calculateTotal()}</strong>
-                {Auth.loggedIn() ? (
-                  <button onClick={submitCheckout}>Checkout</button>
-                ) : (
-                  <span>(log in to check out)</span>
-                )}
+              <>
                 {state.cart.map((item) => (
                   <CartItem key={item._id} item={item} />
                 ))}
-
-                <div className="flex-row space-between">
-
+                <div className="checkout-container">
+                  <strong className='mx-2'>Total: ${calculateTotal()}</strong>
+                  {Auth.loggedIn() ? (
+                    <button className="checkout-button" onClick={submitCheckout}>Checkout</button>
+                  ) : (
+                    <span>(log in to check out)</span>
+                  )}
                 </div>
-              </div>
+              </>
             ) : (
               <h3>
                 <span role="img" aria-label="shocked">

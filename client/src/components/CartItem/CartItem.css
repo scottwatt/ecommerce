@@ -1,0 +1,37 @@
+.trash{
+    cursor: pointer;
+}
+
+.cart-item-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .item-details {
+    flex: 1;
+    margin-left: 10px;
+  }
+  
+  .qty-and-trash {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+  }
+  
+  .trash-container {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* You can adjust this margin if you need more spacing between items */
+  .item-image {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }

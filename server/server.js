@@ -5,9 +5,9 @@ const { authMiddleware } = require('./utils/auth');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
-require("dotenv").config();
+require('dotenv').config();
 
-const PORT = process.env.PORT || 3001;
+const PORT = 5001;
 const app = express();
 const cors = require('cors');
 const server = new ApolloServer({
@@ -16,10 +16,13 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true 
+};
+app.use(cors(corsOptions));
 
 // Serve up static assets
 app.use('/images', express.static(path.join(__dirname, '../client/images')));
@@ -32,19 +35,15 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+// Establish MongoDB connection
+db.once('open', () => {
+  // Create a new instance of an Apollo server with the GraphQL schema
+  server.start().then(() => {
+    server.applyMiddleware({ app });
 
-// Create a new instance of an Apollo server with the GraphQL schema
-const startApolloServer = async (typeDefs, resolvers) => {
-  await server.start();
-  server.applyMiddleware({ app });
-  
-  db.once('open', () => {
     app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
+      console.log(`API server running on http://localhost:${PORT}`);
       console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-    })
-  })
-  };
-  
-// Call the async function to start the server
-  startApolloServer(typeDefs, resolvers);
+    });
+  });
+});

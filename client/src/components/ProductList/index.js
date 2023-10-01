@@ -14,6 +14,8 @@ function ProductList({ carousel = false }) {
   const { currentCategory } = state;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
+  console.log("Data from the server:", data);
+
 
   useEffect(() => {
     if (data) {

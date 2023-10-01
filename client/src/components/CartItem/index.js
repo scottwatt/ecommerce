@@ -2,6 +2,7 @@ import React from 'react';
 import { useStoreContext } from "../../utils/GlobalState";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import './CartItem.css'
 
 const CartItem = ({ item }) => {
 
@@ -37,30 +38,35 @@ const CartItem = ({ item }) => {
   }
 
   return (
-    <div className="flex-row">
-      <div>
+    <div className="flex-row cart-item-container">
+      <div className="item-image">
         <img
           src={`/images/${item.image}`}
           alt=""
         />
       </div>
-      <div>
+      <div className="item-details">
         <div>{item.name}, ${item.price}</div>
-        <div>
-          <span>Qty:</span>
-          <input
-            type="number"
-            placeholder="1"
-            value={item.purchaseQuantity}
-            onChange={onChange}
-          />
-          <span
-            role="img"
-            aria-label="trash"
-            onClick={() => removeFromCart(item)}
-          >
-            🗑️
-          </span>
+        <div className="qty-and-trash">
+          <div className="qty-controls">
+            <span>Qty:</span>
+            <input
+              type="number"
+              placeholder="1"
+              value={item.purchaseQuantity}
+              onChange={onChange}
+            />
+          </div>
+          <div className="trash-container">
+            <span
+              className="trash"
+              role="img"
+              aria-label="trash"
+              onClick={() => removeFromCart(item)}
+            >
+              🗑️
+            </span>
+          </div>
         </div>
       </div>
     </div>
